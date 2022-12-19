@@ -1,0 +1,12 @@
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
+/node_modules
+/tmp
+/apps/l2e-backend/src/test/__mocks__
+/apps/l2e-queries/src/migrations
+/apps/l2e-queries/src/seed
+/db
+/db-test
+/redis-store

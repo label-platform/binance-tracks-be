@@ -1,0 +1,41 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["node"],
+    "emitDecoratorMetadata": true,
+    "target": "es2015",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "paths": {
+      "@src/*": ["apps/l2e-websocket/src/*"],
+      "@assets/*": ["apps/l2e-websocket/src/assets/*"],
+      "@l2e-backend/common/*": ["apps/l2e-backend/src/common/*"],
+      "@l2e-backend/cores/*": ["apps/l2e-backend/src/cores/*"],
+      "@l2e-backend/users/*": ["apps/l2e-backend/src/modules/users/*"],
+      "@l2e-backend/spending-balances/*": [
+        "apps/l2e-backend/src/modules/spending-balances/*"
+      ],
+      "@libs/l2e-database": ["libs/l2e-database/src/index.ts"],
+      "@libs/l2e-queries/dtos": ["libs/l2e-queries/src/dtos/index.ts"],
+      "@libs/l2e-queries/entities": ["libs/l2e-queries/src/entities/index.ts"],
+      "@libs/l2e-queries/repositories": [
+        "libs/l2e-queries/src/repositories/index.ts"
+      ],
+      "@libs/l2e-queries/seed": ["libs/l2e-queries/src/seed/index.ts"],
+      "@libs/l2e-queries/utils": ["libs/l2e-queries/src/utils/index.ts"],
+      "@libs/l2e-utils/constants": ["libs/l2e-utils/src/constants/index.ts"],
+      "@libs/l2e-utils/util-functions": [
+        "libs/l2e-utils/src/util-functions/index.ts"
+      ],
+      "@libs/l2e-pagination": ["libs/l2e-pagination/src/index.ts"],
+      "@libs/l2e-pagination/dtos": ["libs/l2e-pagination/src/dtos/index.ts"],
+      "@libs/l2e-pagination/constants": [
+        "libs/l2e-pagination/src/constants/index.ts"
+      ]
+    }
+  },
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["**/*.ts", "ormconfig.js"]
+}

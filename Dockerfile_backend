@@ -1,0 +1,10 @@
+FROM tracks-be-base:221004
+
+RUN mkdir -p /app/backend
+WORKDIR /app/backend
+COPY . .
+RUN npm install
+
+EXPOSE 3333
+
+CMD ["npm", "run", "l2e-backend:serve"]

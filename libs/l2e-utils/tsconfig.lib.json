@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": ["node"],
+    "target": "es6"
+  },
+  "include": [
+    "**/*.ts",
+    "../l2e-queries/src/utils/item-policy.ts",
+    "../../apps/l2e-backend/src/common/exception-handler.ts"
+  ],
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "l2e-backend": "apps/l2e-backend",
+    "l2e-crawler": "apps/l2e-crawler",
+    "l2e-database": "libs/l2e-database",
+    "l2e-json": "apps/l2e-json",
+    "l2e-pagination": "libs/l2e-pagination",
+    "l2e-queries": "libs/l2e-queries",
+    "l2e-queue": "apps/l2e-queue",
+    "l2e-scheduler": "apps/l2e-scheduler",
+    "l2e-utils": "libs/l2e-utils",
+    "l2e-websocket": "apps/l2e-websocket"
+  }
+}

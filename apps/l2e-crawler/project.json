@@ -1,0 +1,60 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/l2e-crawler/src",
+  "projectType": "application",
+  "implicitDependencies": ["l2e-queries", "l2e-utils"],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/l2e-crawler",
+        "main": "apps/l2e-crawler/src/main.ts",
+        "tsConfig": "apps/l2e-crawler/tsconfig.app.json",
+        "assets": ["apps/l2e-crawler/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/l2e-crawler/src/environments/environment.ts",
+              "with": "apps/l2e-crawler/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "l2e-crawler:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "l2e-crawler:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/l2e-crawler/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/l2e-crawler"],
+      "options": {
+        "jestConfig": "apps/l2e-crawler/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,46 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root@l2e
+      MYSQL_DATABASE: l2e
+      MYSQL_USER: adriennguyen
+      MYSQL_PASSWORD: adriennguyen@label
+    ports:
+      - '3307:3306'
+    volumes:
+      - ./db:/var/lib/mysql
+  testdb:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root@l2e
+      MYSQL_DATABASE: l2etest
+      MYSQL_USER: adriennguyen
+      MYSQL_PASSWORD: adriennguyen@label
+    ports:
+      - '3309:3306'
+    volumes:
+      - ./db-test:/var/lib/mysql
+  redis:
+    image: 'redis:alpine'
+    restart: always
+    command: redis-server
+    volumes:
+      - ./redis-store:/var/lib/redis
+    ports:
+      - '6380:6379'
+# networks:
+#   default:
+#     external:
+#       name: l2e-network
+volumes:
+  db:
+    driver: local
+  redis-store:

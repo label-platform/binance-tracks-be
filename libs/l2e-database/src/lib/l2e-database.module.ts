@@ -1,0 +1,102 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { Logger, Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import {
+  User,
+  ActivationCode,
+  UserOtp,
+  LoginSession,
+  CrawlerLog,
+  SpendingBalance,
+  Nft,
+  Withdraw,
+  Headphone,
+  HeadphoneBox,
+  HeadphoneDock,
+  Item,
+  Sticker,
+  MysteryBox,
+  Pinballhead,
+  ItemSale,
+  SaleHistory,
+  Song,
+  SongGenre,
+  SongArtist,
+  AlbumInfo,
+  AlbumArtist,
+  AlbumGenre,
+  ArtistInfo,
+  GenreInfo,
+  Playlist,
+  PlaylistDetail,
+  PlaylistCategory,
+  PlaylistCategoryDetail,
+  TracksFormula,
+  ListenHistory,
+  Ticket,
+  Merchandise,
+} from '../../../l2e-queries/src';
+
+@Module({
+  imports: [
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => {
+        // console.log(configService.get('DB_PORT'));
+        return {
+          type: 'mysql',
+          host: configService.get('DB_HOST'),
+          port: configService.get('DB_PORT'),
+          username: configService.get('DB_USER'),
+          password: configService.get('DB_PASS'),
+          database: configService.get('DB_NAME'),
+          entities: [
+            User,
+            ActivationCode,
+            UserOtp,
+            LoginSession,
+            CrawlerLog,
+            SpendingBalance,
+            Nft,
+            Withdraw,
+            Item,
+            Headphone,
+            HeadphoneBox,
+            HeadphoneDock,
+            Sticker,
+            MysteryBox,
+            Pinballhead,
+            Ticket,
+            Merchandise,
+            ItemSale,
+            SaleHistory,
+            Song,
+            SongGenre,
+            SongArtist,
+            AlbumInfo,
+            AlbumArtist,
+            AlbumGenre,
+            ArtistInfo,
+            GenreInfo,
+            Playlist,
+            PlaylistDetail,
+            PlaylistCategory,
+            PlaylistCategoryDetail,
+            TracksFormula,
+            ListenHistory
+          ],
+          synchronize: false,
+          timezone: '+00:00',
+          debug: false,
+          logging: false,
+          extra: {
+            connectionLimit: 3000,
+          },
+        };
+      },
+      inject: [ConfigService],
+    }),
+  ],
+})
+export class DatabaseModule {}

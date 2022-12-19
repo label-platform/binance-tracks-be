@@ -1,0 +1,55 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/l2e-queries/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/l2e-queries/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/l2e-queries"],
+      "options": {
+        "jestConfig": "libs/l2e-queries/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "migration-create": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "ts-node --project ../../tsconfig.lib.json ../../../../node_modules/.bin/typeorm migration:create",
+        "cwd": "libs/l2e-queries/src/migrations"
+      }
+    },
+    "migration-run": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "ts-node --project ../../tsconfig.lib.json ../../../../node_modules/.bin/typeorm migration:run -d ../../ormconfig.ts",
+        "cwd": "libs/l2e-queries/src/migrations"
+      }
+    },
+    "migration-revert": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "ts-node --project ../../tsconfig.lib.json ../../../../node_modules/.bin/typeorm migration:revert -d ../../ormconfig.ts",
+        "cwd": "libs/l2e-queries/src/migrations"
+      }
+    },
+    "migration-generate": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "ts-node --project ../../tsconfig.lib.json ../../../../node_modules/.bin/typeorm migration:generate -d ../../ormconfig.ts",
+        "cwd": "libs/l2e-queries/src/migrations"
+      }
+    }
+  },
+  "tags": []
+}

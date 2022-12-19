@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@l2e-backend": ["apps/l2e-backend"],
+      "@l2e-crawler": ["apps/l2e-crawler"],
+      "@label-l2e/l2e-pagination": ["libs/l2e-pagination/src/index.ts"],
+      "@label-l2e/l2e-utils": ["libs/l2e-utils/src/index.ts"],
+      "@libs/l2e-database": ["libs/l2e-database/src/index.ts"],
+      "@libs/l2e-queries": ["libs/l2e-queries/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
